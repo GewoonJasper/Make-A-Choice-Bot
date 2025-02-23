@@ -13,6 +13,10 @@ public sealed class Program {
         var config = new ConfigUtil();
         await config.ReadConfig();
 
+        if (config.Token == default) {
+            return;
+        }
+
         Client = new DiscordClient(new DiscordConfiguration
         {
             Token = config.Token,
