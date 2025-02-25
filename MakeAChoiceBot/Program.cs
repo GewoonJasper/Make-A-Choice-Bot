@@ -37,11 +37,11 @@ public sealed class Program {
         _commands.RegisterCommands<Commands>();
 
         await Client.ConnectAsync();
-
+    
         while (true)
         {
             await Task.Delay(TimeSpan.FromMinutes(5));
-            await Client.UpdateStatusAsync(new DiscordActivity("Staying alive!", ActivityType.Watching));
+            await Client.UpdateStatusAsync(new DiscordActivity("People choosing games", ActivityType.Watching));
         }
     }
     
