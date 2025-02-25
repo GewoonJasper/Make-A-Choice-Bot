@@ -27,7 +27,7 @@ class GameOptions {
     public IEnumerable<string> GetInteractivityEmojiNames() {
         var numberNames = new List<string> { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-        foreach (var playerAmount in _options.Keys) {
+        foreach (var playerAmount in _options.Keys.Order()) {
             if (playerAmount <= numberNames.Count) {
                 yield return numberNames[playerAmount - 1];
             }
