@@ -1,4 +1,5 @@
 ﻿using DSharpPlus;
+using DSharpPlus.Entities;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.SlashCommands;
@@ -36,7 +37,12 @@ public sealed class Program {
         _commands.RegisterCommands<Commands>();
 
         await Client.ConnectAsync();
-        await Task.Delay(-1); // Keep the bot running
+
+        while (true)
+        {
+            await Task.Delay(TimeSpan.FromMinutes(5));
+            await Client.UpdateStatusAsync(new DiscordActivity("Staying alive!", ActivityType.Watching));
+        }
     }
     
     static Task OnReady(DiscordClient sender, ReadyEventArgs e)
